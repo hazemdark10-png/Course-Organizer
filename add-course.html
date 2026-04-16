@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Course — CourseVault</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="CourseVault Home">
+        <div class="nav-logo-icon">📚</div>
+        <span class="nav-logo-text">Course<span>Vault</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="courses.html">📖 My Courses</a></li>
+          <li><a href="add-course.html" class="active">➕ Add Course</a></li>
+          <li><a href="contact.html">✉️ Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ═══ -->
+  <main>
+    <div class="container">
+
+      <!-- Page Banner -->
+      <div class="page-banner">
+        <div class="hero-eyebrow">New Entry</div>
+        <h1>Add a Course</h1>
+        <p>Fill in the details below to add a new course to your CourseVault record.</p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="card form-card" style="margin-bottom:56px;">
+        <h2 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:28px;">
+          Course Information
+        </h2>
+
+        <form id="courseForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Course Name -->
+            <div class="form-group full">
+              <label for="courseName">Course Name <span style="color:var(--accent)">*</span></label>
+              <input
+                type="text"
+                id="courseName"
+                name="courseName"
+                placeholder="e.g. Data Structures &amp; Algorithms"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Course Code -->
+            <div class="form-group">
+              <label for="courseCode">Course Code <span style="color:var(--accent)">*</span></label>
+              <input
+                type="text"
+                id="courseCode"
+                name="courseCode"
+                placeholder="e.g. CS 301"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Credit Hours -->
+            <div class="form-group">
+              <label for="creditHours">Credit Hours <span style="color:var(--accent)">*</span></label>
+              <input
+                type="number"
+                id="creditHours"
+                name="creditHours"
+                placeholder="e.g. 3"
+                min="1"
+                max="6"
+                required
+              />
+            </div>
+
+            <!-- Instructor -->
+            <div class="form-group">
+              <label for="instructor">Instructor <span style="color:var(--accent)">*</span></label>
+              <input
+                type="text"
+                id="instructor"
+                name="instructor"
+                placeholder="e.g. Dr. Ahmed Hassan"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Semester -->
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <select id="semester" name="semester">
+                <option value="" disabled selected>Select semester…</option>
+                <option value="spring-2025">Spring 2025</option>
+                <option value="summer-2025">Summer 2025</option>
+                <option value="fall-2025">Fall 2025</option>
+                <option value="spring-2026">Spring 2026</option>
+              </select>
+            </div>
+
+            <!-- Schedule -->
+            <div class="form-group">
+              <label for="schedule">Class Schedule</label>
+              <input
+                type="text"
+                id="schedule"
+                name="schedule"
+                placeholder="e.g. Mon / Wed 10:00 AM"
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Status -->
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <option value="" disabled selected>Select status…</option>
+                <option value="in-progress">In Progress</option>
+                <option value="pending-grade">Pending Grade</option>
+                <option value="upcoming-exam">Upcoming Exam</option>
+                <option value="audit">Audit</option>
+                <option value="dropped">Dropped</option>
+              </select>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group full">
+              <label for="notes">Notes</label>
+              <textarea
+                id="notes"
+                name="notes"
+                placeholder="Add any personal notes — deadlines, textbooks, office hours, exam dates…"
+              ></textarea>
+            </div>
+
+          </div><!-- /form-grid -->
+
+          <!-- Actions -->
+          <div class="form-actions" style="margin-top:28px;">
+            <button type="submit" class="btn btn-primary">
+              ➕ Add Course
+            </button>
+            <button type="reset" class="btn btn-outline">
+              Clear Form
+            </button>
+            <a href="courses.html" class="btn btn-outline">
+              ← Back to Courses
+            </a>
+          </div>
+
+          <!-- Success alert -->
+          <div class="alert alert-success" id="successAlert" role="alert" aria-live="polite">
+            ✅ Course added successfully! <a href="courses.html" style="color:inherit;text-decoration:underline;">View all courses →</a>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2025 CourseVault. Built for students, by students.</p>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="add-course.html">Add Course</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* Nav toggle */
+    const toggle = document.getElementById('navToggle');
+    const nav    = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    /* Form submission */
+    const form  = document.getElementById('courseForm');
+    const alert = document.getElementById('successAlert');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      /* Basic validation */
+      const required = ['courseName', 'courseCode', 'creditHours', 'instructor'];
+      let valid = true;
+
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#f87171';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+
+      if (!valid) return;
+
+      /* Show success */
+      alert.style.display = 'flex';
+      form.reset();
+      alert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+
+</body>
+</html>
